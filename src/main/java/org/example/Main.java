@@ -15,12 +15,18 @@ public class Main {
         while (true) {
         System.out.print("Digite o nome (ou FIM para encerrar): ");
         String nome = scanner.nextLine();
-        if(nome.equalsIgnoreCase(FIM)){
+        if(nome.equalsIgnoreCase("FIM")){
             break;
         }
         System.out.print("Digite a idade: ");
             int idade;
-        pessoa.add(new Pessoa(nome, idade))
+            try {
+                idade = Integer.parseInt(scanner.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Idade inválida. Tente novamente.");
+                continue;
+            }
+        pessoa.add(new Pessoa(nome, idade));
     }
 
         System.out.println("Objeto(s) convertido(s) para JSON:");
