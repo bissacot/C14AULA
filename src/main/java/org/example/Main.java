@@ -20,7 +20,7 @@ public class Main {
         }
         System.out.print("Digite a idade: ");
             int idade;
-        pessoas.add(new Pessoa(nome, idade))
+        pessoa.add(new Pessoa(nome, idade))
     }
 
         System.out.println("Objeto(s) convertido(s) para JSON:");
