@@ -35,12 +35,12 @@ public class Main {
     }
 
     static class Pessoa {
-        String nome;
-        int idade;
+        String cpf;
+        int rg;
 
-        Pessoa(String nome, int idade) {
-            this.nome = nome;
-            this.idade = idade;
+        Pessoa(String cpf, int rg) {
+            this.nome = cpf;
+            this.idade = rg;
         }
     }
 }
