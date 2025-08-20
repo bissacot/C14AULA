@@ -52,6 +52,12 @@ Digite o nome (ou FIM para encerrar): FIM
 Objeto(s) convertido(s) para JSON:
 [{"nome":"Gabriel","idade":25},{"nome":"Ana","idade":30}]
 ```
+## Correção
+
+Foi realizado dois commits:
+
+- atualizacao_classe_pessoa: merge da branch (alteracaoclasse) com commit conflitante.
+- Correcao_Classe_Pessoa: commit corrigindo merge com commit conflitante.
 
 ## Dependências
 
