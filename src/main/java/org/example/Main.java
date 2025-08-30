@@ -32,15 +32,6 @@ public class Main {
         System.out.println("Objeto(s) convertido(s) para JSON:");
         String json = gson.toJson(pessoa);
         System.out.println(json);
-    }
-
-    static class Pessoa {
-        String nome;
-        int idade;
-
-        Pessoa(String nome, int idade) {
-            this.nome = nome;
-            this.idade = idade;
-        }
+        scanner.close();
     }
 }
