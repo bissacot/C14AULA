@@ -96,4 +96,92 @@ public class MainTest {
         assertTrue(json.contains("Bruno"));
         assertTrue(json.contains("Carla"));
     }
+
+    @Test
+    public void testeFalsoPessoaIgualdade() {
+        Pessoa p1 = new Pessoa("Lucas", 18);
+        Pessoa p2 = new Pessoa("Lucas", 18);
+        assertNotEquals(p1.nome, p2.nome);
+        assertNotEquals(p1.idade, p2.idade);
+    }
+
+    @Test
+    public void testeFalsoSerializacaoListaComVariosElementos(){
+        List<Pessoa> pessoas = new ArrayList<>();
+        pessoas.add(new Pessoa("Alice", 23));
+        pessoas.add(new Pessoa("Bruno", 34));
+        pessoas.add(new Pessoa("Carla", 29));
+        Gson gson = new Gson();
+        String json = gson.toJson(pessoas);
+        assertFalse(json.contains("Alice"));
+        assertFalse(json.contains("Bruno"));
+        assertFalse(json.contains("Carla"));
+    }
+
+    @Test
+    public void testeFalsoSerializacaoListaVazia(){
+        List<Pessoa> pessoas = new ArrayList<>();
+        Gson gson = new Gson();
+        String json = gson.toJson(pessoas);
+        assertNotEquals("[]", json);
+    }
+
+    @Test
+    public void testeFalsoListaNaoVazia(){
+        List<Pessoa> pessoas = new ArrayList<>();
+        pessoas.add(new Pessoa("Alice", 35));
+        pessoas.add(new Pessoa("Bruno", 29));
+        pessoas.add(new Pessoa("Clara", 40));
+        assertTrue(pessoas.isEmpty());
+    }
+
+    @Test
+    public void testeFalsoListaVazia(){
+        List<Pessoa> pessoas = new ArrayList<>();
+        assertFalse(pessoas.isEmpty());
+    }
+
+    @Test
+    public void testeFalsoPessoaDiferenca() {
+        Pessoa p1 = new Pessoa("Julia", 28);
+        Pessoa p2 = new Pessoa("Julia", 30);
+        assertNotEquals(p1.nome, p2.nome);
+        assertEquals(p1.idade, p2.idade);
+    }
+
+    @Test
+    public void testeFalsoCriacao() {
+        Pessoa pessoa = new Pessoa("Ana", 20);
+        assertNotEquals("Ana", pessoa.nome);
+        assertNotEquals(20, pessoa.idade);
+    }
+
+    @Test
+    public void testeFalsoAddPessoa() {
+        List<Pessoa> pessoas = new ArrayList<>();
+        pessoas.add(new Pessoa("Ana", 30));
+        assertNotEquals(1, pessoas.size());
+        assertNotEquals("Ana", pessoas.get(0).nome);
+    }
+
+    @Test
+    public void testeFalsoSerializacao() {
+        List<Pessoa> pessoas = new ArrayList<>();
+        pessoas.add(new Pessoa("Ana", 25));
+        Gson gson = new Gson();
+        String json = gson.toJson(pessoas);
+        assertFalse(json.contains("Ana"));
+        assertFalse(json.contains("25"));
+    }
+
+    @Test
+    public void testeFalsoSerializacaoMultipla() {
+        List<Pessoa> pessoas = new ArrayList<>();
+        pessoas.add(new Pessoa("Alice", 40));
+        pessoas.add(new Pessoa("Bia", 22));
+        Gson gson = new Gson();
+        String json = gson.toJson(pessoas);
+        assertFalse(json.contains("Alice"));
+        assertFalse(json.contains("Bia"));
+    }
 }
