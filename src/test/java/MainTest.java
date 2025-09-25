@@ -97,7 +97,7 @@ public class MainTest {
         assertTrue(json.contains("Carla"));
     }
 
-    @Test
+     @Test
     public void testeFalsoPessoaIgualdade() {
         Pessoa p1 = new Pessoa("Lucas", 18);
         Pessoa p2 = new Pessoa("Lucas", 18);
@@ -184,4 +184,5 @@ public class MainTest {
         assertFalse(json.contains("Alice"));
         assertFalse(json.contains("Bia"));
     }
+        
 }
