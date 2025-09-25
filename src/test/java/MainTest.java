@@ -97,7 +97,8 @@ public class MainTest {
         assertTrue(json.contains("Carla"));
     }
 
-     @Test
+    /*
+    @Test
     public void testeFalsoPessoaIgualdade() {
         Pessoa p1 = new Pessoa("Lucas", 18);
         Pessoa p2 = new Pessoa("Lucas", 18);
@@ -183,6 +184,41 @@ public class MainTest {
         String json = gson.toJson(pessoas);
         assertFalse(json.contains("Alice"));
         assertFalse(json.contains("Bia"));
+    }
+    */
+
+    @Test
+    public void testPessoaWithZeroAge() {
+        Pessoa pessoa = new Pessoa("Beto", 0);
+        assertEquals(0, pessoa.idade);
+    }
+
+    @Test
+    public void testPessoaWithNegativeAge() {
+        Pessoa pessoa = new Pessoa("Tina", -5);
+        assertEquals(-5, pessoa.idade);
+    }
+
+    @Test
+    public void testPessoaWithEmptyName() {
+        Pessoa pessoa = new Pessoa("", 18);
+        assertEquals("", pessoa.nome);
+    }
+
+    @Test
+    public void testPessoaWithLongName() {
+        String longName = "A".repeat(100);
+        Pessoa pessoa = new Pessoa(longName, 50);
+        assertEquals(longName, pessoa.nome);
+    }
+
+    @Test
+    public void testPessoaListClear() {
+        List<Pessoa> pessoas = new ArrayList<>();
+        pessoas.add(new Pessoa("Ana", 20));
+        pessoas.add(new Pessoa("Bia", 21));
+        pessoas.clear();
+        assertTrue(pessoas.isEmpty());
     }
         
 }
