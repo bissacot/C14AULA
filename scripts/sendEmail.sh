@@ -3,7 +3,7 @@ sudo apt-get install mailutils
 
 set -e
  
-if [ -z "$EMAIL_RECIPIENT" ]; then
+if [ -z "$NOTIFY_EMAIL" ]; then
 
   echo "ERROR: EMAIL_RECIPIENT is not set."
 
