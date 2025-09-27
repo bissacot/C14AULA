@@ -1,21 +1,21 @@
 sudo apt-get install mailutils
-#!/usr/bin/env bash
+!/usr/bin/env bash
 
-#set -e
+set -e
  
-#if [ -z "$EMAIL_RECIPIENT" ]; then
+if [ -z "$EMAIL_RECIPIENT" ]; then
 
-#  echo "ERROR: EMAIL_RECIPIENT is not set."
+  echo "ERROR: EMAIL_RECIPIENT is not set."
 
-#  exit 1
+  exit 1
 
-#fi
+fi
  
 # Trivial email body
-#BODY="Pipeline executada com sucesso!"
+BODY="Pipeline executada com sucesso!"
  
-#echo "$BODY" | mail -s "Notificação Pipeline" "$EMAIL_RECIPIENT"
+echo "$BODY" | mail -s "Notificação Pipeline" "$EMAIL_RECIPIENT"
  
-#echo "Enviado p/ $EMAIL_RECIPIENT"
+echo "Enviado p/ $EMAIL_RECIPIENT"
 
-echo "Sending mail after pipeline compl" | mail -s "Pipeline" lckbgqqkdwvsoucqyo@nespj.com
+#echo "Sending mail after pipeline compl" | mail -s "Pipeline" lckbgqqkdwvsoucqyo@nespj.com
