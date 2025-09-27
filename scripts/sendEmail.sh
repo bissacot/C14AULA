@@ -14,8 +14,8 @@ fi
 # Trivial email body
 BODY="Pipeline executada com sucesso!"
  
-echo "$BODY" | mail -s "Notificação Pipeline" "$EMAIL_RECIPIENT"
+echo "$BODY" | mail -s "Notificação Pipeline" "$NOTIFY_EMAIL"
  
-echo "Enviado p/ $EMAIL_RECIPIENT"
+echo "Enviado p/ $NOTIFY_EMAIL"
 
 #echo "Sending mail after pipeline compl" | mail -s "Pipeline" lckbgqqkdwvsoucqyo@nespj.com
