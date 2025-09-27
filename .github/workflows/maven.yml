@@ -17,9 +17,9 @@ on:
 
 jobs:
   test:
-   
+    
     runs-on: ubuntu-latest
- 
+
     steps:
     - uses: actions/checkout@v4
     - name: Set up JDK 23
@@ -31,17 +31,17 @@ jobs:
     - name: Build with Maven
       run: |
         mvn clean test site
- 
+
     - name: Upload build artifact
       uses: actions/upload-artifact@v4
       with:
         name: test-report
         path: target/site
- 
+  
   build:
- 
+
     runs-on: ubuntu-latest
- 
+
     steps:
     - uses: actions/checkout@v4
     - name: Set up JDK 23
@@ -53,27 +53,27 @@ jobs:
     - name: Build with Maven
       run: |
         mvn clean install -DskipTests
- 
+
     - name: Upload build artifact
       uses: actions/upload-artifact@v4
       with:
         name: jar-file
         path: target/*.jar
- 
+  
   Notification:
- 
+
     needs: test
- 
+
     runs-on: ubuntu-latest
- 
+
     env:
-      EMAIL_RECIPIENT: ${{ secrets.NOTIFY_EMAIL }}
-   
+      EMAIL_RECIPIENT: ${{ secrets.EMAIL }}
+    
     steps:
     - uses: actions/checkout@v4
     - name: Notification
       run: sh scripts/sendEmail.sh
-      env:
-        EMAIL_RECIPIENT: ${{ secrets.NOTIFY_EMAIL }}
+      #env:
+      #  EMAIL_RECIPIENT: ${{ secrets.EMAIL }}
 
         
