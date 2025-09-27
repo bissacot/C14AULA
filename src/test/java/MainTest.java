@@ -130,5 +130,55 @@ public class MainTest {
         pessoas.clear();
         assertTrue(pessoas.isEmpty());
     }
+
+    @Test
+    public void testPessoaToJsonSingle() {
+        Pessoa pessoa = new Pessoa("Carlos", 45);
+        Gson gson = new Gson();
+        String json = gson.toJson(pessoa);
+        assertTrue(json.contains("Carlos"));
+        assertTrue(json.contains("45"));
+    }
+
+    @Test
+    public void testPessoaListSizeAfterAddAndRemove() {
+        List<Pessoa> pessoas = new ArrayList<>();
+        pessoas.add(new Pessoa("Ana", 25));
+        pessoas.add(new Pessoa("Bruno", 30));
+        pessoas.remove(0);
+        assertEquals(1, pessoas.size());
+        assertEquals("Bruno", pessoas.get(0).nome);
+    }
+
+    @Test
+    public void testJsonContainsAllFields() {
+        Pessoa pessoa = new Pessoa("Marina", 27);
+        Gson gson = new Gson();
+        String json = gson.toJson(pessoa);
+        assertTrue(json.contains("nome"));
+        assertTrue(json.contains("idade"));
+    }
+
+    @Test
+    public void testMultiplePeopleSameNameDifferentAge() {
+        Pessoa p1 = new Pessoa("Rafael", 20);
+        Pessoa p2 = new Pessoa("Rafael", 35);
+        assertEquals(p1.nome, p2.nome);
+        assertNotEquals(p1.idade, p2.idade);
+    }
+
+    @Test
+    public void testLargeListSerialization() {
+        List<Pessoa> pessoas = new ArrayList<>();
+        for (int i = 0; i < 50; i++) {
+            pessoas.add(new Pessoa("Pessoa" + i, i));
+        }
+        Gson gson = new Gson();
+        String json = gson.toJson(pessoas);
+        assertTrue(json.contains("Pessoa0"));
+        assertTrue(json.contains("Pessoa49"));
+        assertEquals(50, pessoas.size());
+    }
+
         
 }
